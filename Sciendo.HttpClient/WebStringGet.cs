@@ -29,16 +29,16 @@ namespace Sciendo.Web
                 {
                     if (getTask.Status == TaskStatus.RanToCompletion || !string.IsNullOrEmpty(getTask.Result))
                     {
-                        logger.LogInformation("Content retrieved Ok from MusicStory");
+                        logger.LogInformation("Content retrieved Ok from Url: {0}", url);
                         return getTask.Result;
                     }
-                    logger.LogWarning("Content not retrieved from MusicStory. Task returned {getTask.Status}", getTask.Status);
+                    logger.LogWarning("Content not retrieved from {url}. Task returned {getTask.Status}", url, getTask.Status);
                     return string.Empty;
                 }
             }
             catch (Exception e)
             {
-                logger.LogError(e, "Cannot retrieve content from MusicStory.");
+                logger.LogError(e, "Cannot retrieve content from {url}.", url);
                 return string.Empty;
             }
 
