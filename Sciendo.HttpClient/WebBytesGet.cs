@@ -18,7 +18,7 @@ namespace Sciendo.Web
 
         public byte[] Get(Uri url)
         {
-            logger.LogInformation("Getting content from Url...");
+            logger.LogDebug("Getting content from Url...");
             if (url == null)
                 throw new ArgumentNullException(nameof(url));
             var httpClient = new HttpClient();
@@ -29,7 +29,7 @@ namespace Sciendo.Web
                 {
                     if (getTask.Status == TaskStatus.RanToCompletion || getTask.Result == null)
                     {
-                        logger.LogInformation("Content retrieved Ok from url");
+                        logger.LogDebug("Content retrieved Ok from url");
                         return getTask.Result;
                     }
                     logger.LogWarning("Content not retrieved from Url. Task returned {getTask.Status}", getTask.Status);
